@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { LogosIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * Internal dependencies
@@ -26,37 +26,30 @@ const settings = {
 	/* translators: block name */
 	title: __( 'OpenTable', 'coblocks' ),
 	/* translators: block description */
-	description: __( 'Add logos, badges, or certifications to build credibility.', 'coblocks' ),
+	description: __( 'Embed an OpenTable Reservations Widget.', 'coblocks' ),
 	icon: <Icon icon={ icon } />,
 	keywords: [
 		'coblocks',
 		/* translators: block keyword */
-		__( 'clients', 'coblocks' ),
+		__( 'restaurant', 'coblocks' ),
 		/* translators: block keyword */
-		__( 'proof', 'coblocks' ),
+		__( 'reservation', 'coblocks' ),
 		/* translators: block keyword */
-		__( 'testimonials', 'coblocks' ),
+		__( 'open', 'coblocks' ),
 		/* translators: block keyword */
-		__( 'awards', 'coblocks' ),
-		/* translators: block keyword */
-		__( 'seal', 'coblocks' ),
+		__( 'table', 'coblocks' ),
 	],
 	styles: [
 		{
-			name: 'default',
+			name: 'wide',
 			/* translators: block style */
-			label: __( 'Default', 'coblocks' ),
+			label: __( 'Wide', 'coblocks' ),
 			isDefault: true,
 		},
 		{
-			name: 'grayscale',
+			name: 'tall',
 			/* translators: block style */
-			label: __( 'Grayscale', 'coblocks' ),
-		},
-		{
-			name: 'black-and-white',
-			/* translators: block style */
-			label: __( 'Black & White', 'coblocks' ),
+			label: __( 'Tall', 'coblocks' ),
 		},
 	],
 	supports: {
@@ -64,11 +57,8 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			align: 'full',
-			images: [
-				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wordpress-Logo.svg/600px-Wordpress-Logo.svg.png', width: 420 },
-				{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/WordPress.svg/640px-WordPress.svg.png', width: 340 },
-			],
+			align: 'wide',
+			restaurantID: '123456',
 		},
 	},
 	attributes,

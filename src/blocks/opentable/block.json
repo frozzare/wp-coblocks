@@ -4,6 +4,9 @@
 	"attributes": {
 		"restaurantID": {
 			"type": "string"
+		},
+		"align": {
+			"type": "string"
 		}
 	}
 }

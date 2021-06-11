@@ -1,13 +1,14 @@
 /**
  * External dependencies
  */
-import { LogosIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { useState } from 'react';
+import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
+import { useState } from '@wordpress/element';
 /**
  * Internal dependencies
  */
 import Controls from './controls';
 import OpenTable from './opentable';
+import InspectorControls from './inspector';
 
 /**
  * WordPress dependencies
@@ -35,9 +36,11 @@ const Edit = ( props ) => {
 
 	// const { className, noticeOperations, attributes, noticeUI, isSelected } = props;
 
-	const [ restaurantID, setRestaurantID ] = useState();
+	// const [ restaurantID, setRestaurantID ] = useState();
+	const [ ridField, setRidField ] = useState();
 
-	const { className, isSelected, attributes, setAttributes } = props;
+	const { className, isSelected, attributes } = props;
+
 	const renderOpenTable = ( event ) => {
 		if ( event ) {
 			event.preventDefault();
@@ -47,16 +50,18 @@ const Edit = ( props ) => {
 	};
 
 	// const hasRestaurantID = !! attributes.restaurantID.length;
-	const hasRestaurantID = false;
 
 	return (
 		<>
 			<Controls { ...props } />
-
+			<InspectorControls
+				attributes={ attributes }
+				setAttributes={ props.setAttributes }
+			/>
 			<div className={ className }>
 				<OpenTable { ...props } />
 
-				{ ( ! hasRestaurantID || isSelected ) && (
+				{ ( ! attributes.restaurantID || isSelected ) && (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'OpenTable', 'coblocks' ) }
@@ -65,27 +70,32 @@ const Edit = ( props ) => {
 							'coblocks'
 						) }
 					>
+
 						<form onSubmit={ renderOpenTable }>
 							<TextControl
-								value={ restaurantID || '' }
+								value={ ridField || '' }
 								className="components-placeholder__input"
 								placeholder={ __(
 									'Restaurant ID',
 									'coblocks'
 								) }
-								onChange={ ( newRestaurantID ) =>
-									setRestaurantID( newRestaurantID )
-								}
+								onChange={ ( newRestaurantID ) => {
+									setRidField( newRestaurantID );
+								} }
 							/>
 							<Button
-								isPrimary={ !! restaurantID }
-								isSecondary={ ! restaurantID }
+								isPrimary={ !! ridField }
+								isSecondary={ ! ridField }
 								type="submit"
-								disabled={ ! restaurantID }
+								disabled={ ! ridField }
+								onClick={ () => {
+									props.setAttributes( { restaurantID: ridField } );
+								} }
 							>
 								{ __( 'Embed', 'coblocks' ) }
 							</Button>
 						</form>
+						<a href="https://guestcenter.opentable.com/login">Need help finding your Restaurant ID?</a>
 					</Placeholder>
 				) }
 			</div>
