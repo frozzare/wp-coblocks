@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { OpentableIcon as icon } from '@godaddy-wordpress/coblocks-icons';
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 /**
  * Internal dependencies
  */
@@ -41,6 +41,10 @@ const Edit = ( props ) => {
 
 	const { className, isSelected, attributes } = props;
 
+	useEffect( () => {
+		setRidField( attributes.restaurantID );
+	}, [] );
+
 	const renderOpenTable = ( event ) => {
 		if ( event ) {
 			event.preventDefault();
@@ -59,9 +63,8 @@ const Edit = ( props ) => {
 				setAttributes={ props.setAttributes }
 			/>
 			<div className={ className }>
-				<OpenTable { ...props } />
 
-				{ ( ! attributes.restaurantID || isSelected ) && (
+				{ ( ! attributes.restaurantID ) ? (
 					<Placeholder
 						icon={ <Icon icon={ icon } /> }
 						label={ __( 'OpenTable', 'coblocks' ) }
@@ -73,7 +76,7 @@ const Edit = ( props ) => {
 
 						<form onSubmit={ renderOpenTable }>
 							<TextControl
-								value={ ridField || '' }
+								value={ ridField }
 								className="components-placeholder__input"
 								placeholder={ __(
 									'Restaurant ID',
@@ -97,7 +100,11 @@ const Edit = ( props ) => {
 						</form>
 						<a href="https://guestcenter.opentable.com/login">Need help finding your Restaurant ID?</a>
 					</Placeholder>
-				) }
+				)
+					: <div className="opentableview">
+						<OpenTable { ...props } />
+					</div>
+				}
 			</div>
 		</>
 	);

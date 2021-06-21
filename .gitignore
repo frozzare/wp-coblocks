@@ -24,3 +24,6 @@ languages/*-coblocks-editor.json
 languages/*.mo
 languages/*.po
 cypress.env.json
+yarn-error.log
+
+*.code-workspace
