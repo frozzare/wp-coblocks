@@ -8,8 +8,6 @@ import { chunk, flatten } from 'lodash';
  * Internal dependencies
  */
 import { Component, Fragment } from '@wordpress/element';
-import { ResizableBox } from '@wordpress/components';
-import { BACKSPACE } from '@wordpress/keycodes';
 
 class OpenTable extends Component {
 	constructor() {
@@ -29,26 +27,14 @@ class OpenTable extends Component {
 	}
 
 	render() {
-		// let count;
-		// const { isSelected } = this.props;
-
-		// switch ( this.props.attributes.align ) {
-		// 	case 'wide':
-		// 		count = 4;
-		// 		break;
-		// 	case 'full':
-		// 		count = 5;
-		// 		break;
-		// 	default:
-		// 		count = 3;
-		// 		break;
-		// }
-
-		// const imageChunks = chunk( this.props.images, count );
-
 		return (
 			<Fragment>
-
+				<div
+					style={ { width: '100%', position: 'absolute' } }
+				/>
+				<div className="iframe__overflow-wrapper">
+					<iframe frameBorder="0" style={ { width: '840px', height: '350px' } } title="open table frame" src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.rid }$&domain=com&type=standard&theme=wide&overlay=false&insideiframe=true` } />
+				</div>
 			</Fragment>
 		);
 	}
