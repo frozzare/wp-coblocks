@@ -101,9 +101,12 @@ const Edit = ( props ) => {
 						<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID here.', 'coblocks' ) }</a>
 					</Placeholder>
 				)
-					: <div className="opentableview">
+					: <>
+						<div
+							style={ { width: '100%', height: '100%', position: 'absolute' } }
+						/>
 						<OpenTable { ...props } />
-					</div>
+					</>
 				}
 			</div>
 		</>
