@@ -98,7 +98,7 @@ const Edit = ( props ) => {
 								{ __( 'Embed', 'coblocks' ) }
 							</Button>
 						</form>
-						<a href="https://guestcenter.opentable.com/login">Need help finding your Restaurant ID?</a>
+						<a target="_blank" rel="noopener noreferrer" href="https://guestcenter.opentable.com/login">{ __( 'Get your Restaurant ID here.', 'coblocks' ) }</a>
 					</Placeholder>
 				)
 					: <div className="opentableview">
