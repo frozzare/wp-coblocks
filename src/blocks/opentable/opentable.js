@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-import { chunk, flatten } from 'lodash';
 
 /**
  * Internal dependencies
@@ -30,7 +25,36 @@ class OpenTable extends Component {
 		return (
 			<Fragment>
 				<div className="iframe__overflow-wrapper">
-					<iframe frameBorder="0" style={ { width: '840px', height: '200px' } } title="open table frame" src={ `//www.opentable.com/widget/reservation/canvas?rid=${ 123456 }$&domain=com&type=standard&theme=wide&overlay=false&insideiframe=true` } />
+					{ { wide: (
+						<iframe
+							frameBorder="0"
+							style={ { width: '840px', height: '200px' } }
+							title="open table frame"
+							src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=wide&overlay=false&insideiframe=true` }
+						/>
+					), tall: (
+						<iframe
+							frameBorder="0"
+							style={ { width: '288px', height: '490px' } }
+							title="open table frame"
+							src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=tall&overlay=false&insideiframe=true` }
+						/>
+					), standard: (
+						<iframe
+							frameBorder="0"
+							style={ { width: '224px', height: '301px' } }
+							title="open table frame"
+							src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
+						/>
+					), button: (
+						<iframe
+							frameBorder="0"
+							style={ { width: '210px', height: '115px' } }
+							title="open table frame"
+							src={ `//www.opentable.com/widget/reservation/canvas?rid=${ this.props.attributes.restaurantID }$&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
+						/>
+					) }[ this.props.className.substring( this.props.className.lastIndexOf( '-' ) + 1 ) ]
+					}
 				</div>
 			</Fragment>
 		);

@@ -41,15 +41,26 @@ const settings = {
 	],
 	styles: [
 		{
+			name: 'standard',
+			/* translators: block style */
+			label: __( 'Standard', 'coblocks' ),
+			isDefault: true,
+		},
+		{
 			name: 'wide',
 			/* translators: block style */
 			label: __( 'Wide', 'coblocks' ),
-			isDefault: true,
 		},
 		{
 			name: 'tall',
 			/* translators: block style */
 			label: __( 'Tall', 'coblocks' ),
+			isDefault: true,
+		},
+		{
+			name: 'button',
+			/* translators: block style */
+			label: __( 'Button', 'coblocks' ),
 		},
 	],
 	supports: {
@@ -57,7 +68,7 @@ const settings = {
 	},
 	example: {
 		attributes: {
-			align: 'wide',
+			align: 'standard',
 			restaurantID: '123456',
 		},
 	},
