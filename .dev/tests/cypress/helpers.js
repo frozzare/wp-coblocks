@@ -143,7 +143,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 		clearBlocks();
 	}
 
-	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"], .edit-post-header-toolbar__inserter-toggle' ).click();
+	cy.get( '.edit-post-header [aria-label="Add block"], .edit-site-header [aria-label="Add block"]' ).click();
 	cy.get( '.block-editor-inserter__search-input,input.block-editor-inserter__search' ).type( blockName );
 
 	const targetClassName = ( blockCategory === 'core' ? '' : `-${ blockCategory }` ) + `-${ blockID }`;
@@ -159,7 +159,7 @@ export function addBlockToPost( blockName, clearEditor = false ) {
 export function savePage() {
 	cy.get( '.edit-post-header__settings button.is-primary' ).click();
 
-	cy.get( '.components-editor-notices__snackbar', { timeout: 10000 } ).should( 'not.be.empty' );
+	cy.get( '.components-snackbar-list__notice-container', { timeout: 10000 } ).should( 'be.visible' );
 
 	// Reload the page to ensure that we're not hitting any block errors
 	cy.reload();
@@ -263,8 +263,8 @@ export function setBlockStyle( style ) {
  * @param {boolean} isChildBlock  Optional selector for children blocks. Default will be top level blocks.
  */
 export function selectBlock( name, isChildBlock = false ) {
-	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation,.edit-post-header-toolbar__list-view-toggle' ).click();
-	cy.get( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
+	cy.get( '.edit-post-header__toolbar' ).find( '.block-editor-block-navigation' ).click();
+	cy.get( '.block-editor-block-navigation__popover' ).find( '.block-editor-block-navigation-leaf' ).contains( isChildBlock ? RegExp( `${ name }$`, 'i' ) : RegExp( name, 'i' ) ).click();
 }
 
 /**
@@ -367,7 +367,7 @@ export const upload = {
  * @param {string} hexColor
  */
 export function setColorSetting( settingName, hexColor ) {
-	openSettingsPanel( /color settings|color/i );
+	openSettingsPanel( /color settings/i );
 	cy.get( '.components-base-control__field' )
 		.contains( RegExp( settingName, 'i' ) )
 		.then( ( $subColorPanel ) => {
@@ -386,7 +386,7 @@ export function setColorSetting( settingName, hexColor ) {
 /**
  * Open a certain settings panel in the right hand sidebar of the editor
  *
- * @param {RegExp} panelText The panel label text to open. eg: Color Settings
+ * @param {string} panelText The panel label text to open. eg: Color Settings
  */
 export function openSettingsPanel( panelText ) {
 	cy.get( '.components-panel__body' )
