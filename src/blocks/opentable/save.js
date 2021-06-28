@@ -1,56 +1,41 @@
-/**
- * WordPress dependencies.
- */
-import { chunk } from 'lodash';
 
 export default function save( { attributes, className } ) {
-	const { align } = attributes;
-
-	const hasRestaurantID = false;
-
-	if ( ! hasRestaurantID ) {
-		return null;
-	}
-
-	let count;
-
-	// switch ( align ) {
-	// 	case 'wide':
-	// 		count = 4;
-	// 		break;
-	// 	case 'full':
-	// 		count = 5;
-	// 		break;
-	// 	default:
-	// 		count = 3;
-	// 		break;
-	// }
-
-	// const imageChunks = chunk( attributes.images, count );
-
+	console.log( className );
 	return (
-		<div className={ className }>
-			{ /* { Object.keys( imageChunks ).map( ( keyOuter ) => {
-				const images = imageChunks[ keyOuter ];
-
-				return (
-					<div className="wp-block-coblocks-opentable__row" key={ 'wrapper-' + keyOuter }>
-						{ images.map( ( img, index ) => {
-							return (
-								<div style={ { width: img.width || ( 100 / images.length ) + '%' } } key={ 'logo-' + keyOuter }>
-									<img
-										key={ 'img-' + index }
-										src={ img.url }
-										alt={ img.alt }
-										data-id={ img.id }
-										data-width={ img.width || ( 100 / images.length ) + '%' }
-									/>
-								</div>
-							);
-						} ) }
-					</div>
-				);
-			} ) } */ }
-		</div>
+		<div></div>
+		// <div className={ className }>
+		// 	<div className="iframe__overflow-wrapper">
+		// 		{ { wide: (
+		// 			<iframe
+		// 				frameBorder="0"
+		// 				style={ { width: '840px', height: '200px', display: 'block', margin: 'auto' } }
+		// 				title="open table frame"
+		// 				src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=wide&overlay=false&insideiframe=true` }
+		// 			/>
+		// 		), tall: (
+		// 			<iframe
+		// 				frameBorder="0"
+		// 				style={ { width: '288px', height: '490px', display: 'block', margin: 'auto' } }
+		// 				title="open table frame"
+		// 				src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=tall&overlay=false&insideiframe=true` }
+		// 			/>
+		// 		), standard: (
+		// 			<iframe
+		// 				frameBorder="0"
+		// 				style={ { width: '224px', height: '301px', display: 'block', margin: 'auto' } }
+		// 				title="open table frame"
+		// 				src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=standard&theme=standard&overlay=false&insideiframe=true` }
+		// 			/>
+		// 		), button: (
+		// 			<iframe
+		// 				frameBorder="0"
+		// 				style={ { width: '210px', height: '115px', display: 'block', margin: 'auto' } }
+		// 				title="open table frame"
+		// 				src={ `//www.opentable.com/widget/reservation/canvas?rid=${ attributes.restaurantID }$&domain=com&type=button&theme=standard&overlay=false&insideiframe=true` }
+		// 			/>
+		// 		) }[ className.substring( className.lastIndexOf( '-' ) + 1 ) ]
+		// 		}
+		// 	</div>
+		// </div>
 	);
 }
